@@ -1,0 +1,11 @@
+AArch64 SO-q-2023-03-06
+{
+0:X1=x; 0:X3=y;
+1:X1=y; 1:X3=x;
+}
+ P0          | P1          ;
+ LDR W0,[X1] | LDR W0,[X1] ;
+ STR W0,[X3] | MOV W2,#42  ;
+             | STR W2,[X3] ;
+exists
+(0:X0=42 /\ 1:X0=42)

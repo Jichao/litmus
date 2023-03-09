@@ -1,0 +1,13 @@
+AArch64 SB
+"Fre PodWR Fre PodWR"
+{
+0:X1=x; 0:X3=y;
+1:X1=y; 1:X3=x;
+}
+ P0          | P1          ; 
+ mov w0, #123 | loop: ;
+ mov w2, #1 | ldr w0, [X1]  ; 
+ str w0, [X1] | cbz   w0, loop ; 
+ str w2, [X3] | ldr w2, [X3]
+exists (1:x0=1 /\ 1:x2=0)
+
